@@ -29,6 +29,7 @@ else
 fi
 pip3 install selenium &&
 pip3 install explicit &&
+python3 mv_wdExec.py &&
 
 echo -e "\n${CL}====================="
 echo -e "${NC}        Done!"
