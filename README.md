@@ -4,7 +4,7 @@
 
 <p align="center">
     <a href="https://github.com/felpshn/insta-watch">
-        <img src="https://img.shields.io/badge/version-1.0-lightgrey">
+        <img src="https://img.shields.io/badge/version-2.0-lightgrey">
     </a>
     <a href="https://www.python.org/">
         <img src="https://img.shields.io/badge/built%20with-Python%203-yellow">
@@ -28,7 +28,7 @@ Automated tool to list the users who don't follow you back on Instagram.
 
 ## :question: How to use
 
-### Setting up for the first time
+### :baby: Setting up for the first time
 
 **1)** Check out your browser version and download the corresponding version of the supported webdrivers listed above.
 
@@ -42,11 +42,22 @@ cd insta-watch
 ```elm
 sudo ./setup.sh
 ```
-**2.2)** If you're in Windows or any other OS, with ```pip```, please install the following libs:
+**2.2)** If you're in Windows or any other OS:
+
+**2.2.1)** With ```pip```, please install the following libs:
 - **selenium**
 - **explicit**
 
-### Running
+**2.2.2)** Run the ```handleWdFile.py``` to automatically extract and move the downloaded webdriver file to the project's root folder.
+```elm
+-- Linux:
+python3 handleWdFile.py
+
+-- Windows:
+py handleWdFile.py
+```
+
+### :running: Running
 ```elm
 -- Linux:
 python3 insta_watch.py
@@ -60,6 +71,6 @@ Thanks for using InstaWatch!, if you have experienced any runtime issues, please
 
 ## :loudspeaker: Additional Info
 
-> If you're using 2FA (two-factor authentication) you will need to manually type the auth code (rly? xD), for that I've set a 15s sleep, after this time, the program will go on its execution. 
+> If you're using 2FA (two-factor authentication) you will need to manually enter the auth code (rly?! xD), for that I've set a 15s sleep, after this time, the program will go on its execution. 
 
 > **Disclaimer:** I am by no means responsible for any usage of this tool, and I'm also not responsible if your account get banned due to extensive use of this tool. Use on your own behalf.
