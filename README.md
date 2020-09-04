@@ -24,7 +24,7 @@ Automated tool to list the users who don't follow you back on Instagram.
 ### Supported WebDrivers (for now)
 - **Google Chrome (Linux & Windows)** - WebDriver download link: https://bit.ly/2EEkcpK
 - **Microsoft Edge Chromium Based (Windows)** - WebDriver download link: https://bit.ly/3hOeeRq
-- **Mozilla Firefox (Linux)** - WebDriver download link: https://bit.ly/2EO4ojZ
+- **Mozilla Firefox (Linux & Windows)** - WebDriver download link: https://bit.ly/2EO4ojZ
 
 ## :question: How to use
 
