@@ -24,7 +24,7 @@ if name == 'nt':
     extractFile(wdPackedRelPath)
     try:
         for i in range(0, len(supportedWebdrivers)):
-            wdExecOriginPath = isfile(f'{downloadsPath}\\{supportedWebdrivers[i]}')
+            wdExecOriginPath = f'{downloadsPath}\\{supportedWebdrivers[i]}'
             if isfile(wdExecOriginPath):
                 move(wdExecOriginPath, wdExecDestPath)
                 print(f'\n// "{supportedWebdrivers[i]}" moved to the project\'s root folder.')
