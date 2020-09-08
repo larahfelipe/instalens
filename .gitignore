@@ -1,8 +1,8 @@
-msedgedriver
-msedgedriver.exe
-geckodriver
-geckodriver.exe
-chromedriver
-chromedriver.exe
-geckodriver.log
 __pycache__
+Driver_Notes
+msedgedriver
+geckodriver
+chromedriver
+*.exe
+*.tar.gz
+*.log

@@ -1,76 +1,82 @@
 <p align="center">
-  <img width="566" height="113" src="https://github.com/felpshn/insta-watch/blob/master/img/instawatch-logo.png">
+    <a href="https://github.com/felpshn/InstaFollow">
+        <img src="https://github.com/felpshn/InstaFollow/blob/master/.github/instafollow-logo.png">
+    </a>
 </p>
 
 <p align="center">
-    <a href="https://github.com/felpshn/insta-watch">
-        <img src="https://img.shields.io/badge/version-2.0-lightgrey">
+    <a href="https://github.com/felpshn/InstaFollow/releases/">
+        <img src="https://img.shields.io/badge/version-4.x-lightgrey">
     </a>
     <a href="https://www.python.org/">
-        <img src="https://img.shields.io/badge/built%20with-Python%203-yellow">
+        <img src="https://img.shields.io/badge/built%20with-Python%203-blue">
     </a>
     <a href="https://github.com/SeleniumHQ/selenium">
         <img src="https://img.shields.io/badge/built%20with-Selenium-brightgreen">
     </a>
-    <a href="https://github.com/felpshn/insta-watch/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-GPLv3-blue">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        <img src="https://img.shields.io/badge/license-CC%20BY--NC--SA%20v4.0-orange">
+    </a>
+    <a href="https://makeapullrequest.com/">
+        <img src="https://img.shields.io/badge/PRs-welcome-blueviolet">
     </a>
 </p>
 
-## :scroll: About
+## About
 
-Automated tool to list the users who don't follow you back on Instagram.
+If you like to know which users are not following you back on Instagram, you just have found a great tool to help you out with that. InstaFollow is a tiny automated tool built with Python and Selenium to list all the users that aren't following you back.
 
-### Supported WebDrivers (for now)
-- **Google Chrome (Linux & Windows)** - WebDriver download link: https://bit.ly/2EEkcpK
-- **Microsoft Edge Chromium Based (Windows)** - WebDriver download link: https://bit.ly/3hOeeRq
-- **Mozilla Firefox (Linux & Windows)** - WebDriver download link: https://bit.ly/2EO4ojZ
+## How to use
 
-## :question: How to use
+Before we begin, make sure that you have `Python 3` and `pip` installed in your machine. Also, check out if you have any of the supported web browsers listed below and it's current version as well (it may be useful).
 
-### :baby: Setting up for the first time
+**Supported browsers**
+- [Google Chrome (Linux & Windows)](https://chromedriver.chromium.org/downloads)
+- [Microsoft Edge Chromium Based (Windows)](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/#downloads)
+- [Mozilla Firefox (Linux & Windows)](https://github.com/mozilla/geckodriver/releases) [Recommended]
 
-**1)** Check out your browser version and download the corresponding version of the supported webdrivers listed above.
+After that, download your browser's webdriver by clicking in his name above. When you're up to download the webdriver, if were offered many versions, choose that one who matches your browser's current version or some previous version that are most close to it, for better compatibility and to avoid unexpected behavior.
 
-**2)** On your sys terminal:
+### Clone this repo and cd into project's folder
+
 ```elm
-git clone https://github.com/felpshn/insta-watch.git
+git clone https://github.com/felpshn/InstaFollow.git
 
-cd insta-watch
+cd InstaFollow
 ```
-**2.1)** If you're in one of the supported linux distros, you can simple run the ```setup.sh``` for setting everything up.
-```elm
-sudo ./setup.sh
-```
-**2.2)** If you're in Windows or any other OS:
 
-**2.2.1)** With ```pip```, please install the following libs:
-- **selenium**
-- **explicit**
+### Installation
 
-**2.2.2)** Run the ```handleWdFile.py``` to automatically extract and move the downloaded webdriver file to the project's root folder.
+Before we move on to the installation process, make sure that you have downloaded one of the compatible webdriver, and also, check if he's in your **Downloads** directory. Then, run the `setup.py` to automatically set all dependencies required and the webdriver as well.
+
 ```elm
 -- Linux:
-python3 handleWdFile.py
+python3 setup.py
 
 -- Windows:
-py handleWdFile.py
+py setup.py
 ```
 
-### :running: Running
+### Running
+
+Now notice, if you use the **2FA (two-factor authentication)**, you will need to type the auth code after logging to your account, for that I've set 15s sleep, after this time, the program will continue it's execution.
+
 ```elm
 -- Linux:
-python3 insta_watch.py
+python3 -m instafollow
 
 -- Windows:
-py insta_watch.py
+py -m instafollow
 ```
 
-### :tada: That's it!
-Thanks for using InstaWatch!, if you have experienced any runtime issues, please let me know. Also, don't forget to read the **Additional Info** section for more details about this little project.
+## Final considerations
 
-## :loudspeaker: Additional Info
+#### That's pretty much it!
 
-> If you're using 2FA (two-factor authentication) you will need to manually enter the auth code (rly?! xD), for that I've set a 15s sleep, after this time, the program will go on its execution. 
+Thanks for using InstaFollow! If you have experienced any issues, please let me know or in case if you know how to solve it, feel free to help fix that out.
 
-> **Disclaimer:** I am by no means responsible for any usage of this tool, and I'm also not responsible if your account get banned due to extensive use of this tool. Use on your own behalf.
+Also, in case you wanna contribute to this tool by writing more efficient code or fixing typos, feel welcomed to do that as well, any kind of contribution is valid! Just keep in mind that he's a **tiny** tool, and therefore, let's try not to lose our focus about the program's main purpose.
+
+> **DISCLAIMER:** This is a research project. I am by no means responsible for any usage of this tool, and I'm also not responsible if your accounts get banned due to the use of this tool. Use on your own behalf.
+
+> **This project is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://github.com/felpshn/instafollow/blob/master/LICENSE)**
