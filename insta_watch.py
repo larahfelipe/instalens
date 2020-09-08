@@ -17,7 +17,9 @@ def clearDisplay():
 
 class GetWebdriver:
     def __init__(self):
-        self.supportedWebdrivers = ['msedgedriver', 'geckodriver', 'chromedriver']
+        self.supportedWebdrivers = [
+            'msedgedriver.exe', 'geckodriver', 'geckodriver.exe', 'chromedriver', 'chromedriver.exe'
+        ]
         self.webdriverExists = ''
         self.webdriverName = ''
 
@@ -27,15 +29,14 @@ class GetWebdriver:
             projRootPath = f'{dirname(realpath(__file__))}\\'
         else:
             projRootPath = f'{dirname(realpath(__file__))}/'
-        try:
-            for i in range(0, len(self.supportedWebdrivers)):
-                webdriverPath = f'{projRootPath}{self.supportedWebdrivers[i]}'
-                if isfile(webdriverPath):
-                    self.webdriverExists = webdriverPath
-                    self.webdriverName = self.supportedWebdrivers[i]
-                    break
-        except:
-            print('!> Webdriver not found!')
+        for i in range(0, len(self.supportedWebdrivers)):
+            webdriverPath = f'{projRootPath}{self.supportedWebdrivers[i]}'
+            if isfile(webdriverPath):
+                self.webdriverExists = webdriverPath
+                self.webdriverName = self.supportedWebdrivers[i]
+                break
+            if i == len(self.supportedWebdrivers[i])-1:
+                print('-'*34, '\n!> Compatible webdriver not found!')
 
 
     def supportedDrivers(self):
@@ -51,9 +52,9 @@ class GetWebdriver:
         self.isDriverExists()
         if self.webdriverName == self.supportedWebdrivers[0]:
             return webdriver.Edge
-        elif self.webdriverName == self.supportedWebdrivers[1]:
+        elif self.webdriverName == self.supportedWebdrivers[1] or self.webdriverName == self.supportedWebdrivers[2]:
             return webdriver.Firefox
-        elif self.webdriverName == self.supportedWebdrivers[2]:
+        elif self.webdriverName == self.supportedWebdrivers[3] or self.webdriverName == self.supportedWebdrivers[4]:
             return webdriver.Chrome
         else:
             raise RuntimeError
@@ -115,14 +116,14 @@ def watchLists(driver, instaUsr, totalFollowing, totalFollowers):
                 followingList.append(usr)
                 if i >= totalFollowing:
                     break
-        except Exception as e:
-            #print(e)
+        except:
             pass
         if k < totalFollowing:
             print(f'> {totalFollowing-k} user(s) not found.\n> {k} username(s) appended.\n')
         else:
             print(f'> {k} username(s) appended.\n')
 
+        k = 0
         sleep(7.5)
         try:
             for i, usr in enumerate(getFollowr(driver, instaUsr), 1):
@@ -131,8 +132,7 @@ def watchLists(driver, instaUsr, totalFollowing, totalFollowers):
                 followersList.append(usr)
                 if i >= totalFollowers:
                     break
-        except Exception as e:
-            #print(e)
+        except:
             pass
         if k < totalFollowers:
             print(f'> {totalFollowers-k} user(s) not found.\n> {k} username(s) appended.\n')
@@ -150,7 +150,6 @@ def watchLists(driver, instaUsr, totalFollowing, totalFollowers):
         print('-'*34, '\n> Not following you back:\n')
         for k in range(0, len(notFollowingBack)):
             print(f'({k+1})- {notFollowingBack[k]}')
-        print('\n')
 
     finally:
         driver.quit()
@@ -160,15 +159,17 @@ def watchLists(driver, instaUsr, totalFollowing, totalFollowers):
 if __name__ == "__main__":
     clearDisplay()
     print('='*8, '<> InstaWatch <>', '='*8)
-    print(' '*7, 'written by felpshn')
     instaUsr = str(input('\n> Username: '))
     instaPass = str(input('> Password: '))
     totalFollowing = int(input('\n> Num of users that you follow: '))
     totalFollowers = int(input('> Num of users that follows you: '))
-    driver = GetWebdriver().driverName()(executable_path=GetWebdriver().driverPath())
-    print('-'*34, '\n> Done!\n> Starting browser ...')
-    print('-'*34)
-    sleep(2.5)
-    signIn(driver, instaUsr, instaPass)
-    watchLists(driver, instaUsr, totalFollowing, totalFollowers)
-    input('Press any key to continue ...')
+    try:
+        driver = GetWebdriver().driverName()(executable_path=GetWebdriver().driverPath())
+        print('-'*34, '\n> Done!\n> Starting browser ...')
+        print('-'*34)
+        sleep(2.5)
+        signIn(driver, instaUsr, instaPass)
+        watchLists(driver, instaUsr, totalFollowing, totalFollowers)
+    except Exception as e:
+        print(e)
+    input('\nPress any key to continue ...')
