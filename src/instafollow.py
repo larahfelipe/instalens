@@ -11,10 +11,7 @@ from time import sleep
 
 
 def clearScreen():
-    if name == 'nt':
-        system('cls')
-    else:
-        system('clear')
+    system('cls') if name == 'nt' else system('clear')
 
 
 def signIn(driver, accData):
@@ -51,34 +48,21 @@ def watchAcc(driver, accData):
     followingList = []
     followersList = []
     notFollowingBack = []
-    try:
-        for i, usr in enumerate(getProfile(accData[0], 'following'), 1):
-            #print(f'({i})- {usr}')
-            k = i
-            followingList.append(usr)
-            if i >= accData[2]:
-                break
-    except:
-        pass
-    if k < accData[2]:
-        print(f'> {accData[2]-k} user(s) not found.\n> {k} username(s) appended.\n')
-    else:
-        print(f'> {k} username(s) appended.\n')
-
-    k = 0
-    try:
-        for i, usr in enumerate(getProfile(accData[0], 'followers'), 1):
-            #print(f'({i})- {usr}')
-            k = i
-            followersList.append(usr)
-            if i >= accData[3]:
-                break
-    except:
-        pass
-    if k < accData[3]:
-        print(f'> {accData[3]-k} user(s) not found.\n> {k} username(s) appended.\n')
-    else:
-        print(f'> {k} username(s) appended.\n')
+    for a in range(1, 3):
+        try:
+            runtimeHandler = 'following' if a == 1 else 'followers'
+            for i, usr in enumerate(getProfile(accData[0], runtimeHandler), 1):
+                k = i
+                if runtimeHandler == 'following':
+                    followingList.append(usr)
+                else:
+                    followersList.append(usr)
+        except:
+            if k < accData[a+1]:
+                print(f'> {accData[a+1]-k} user(s) not found.\n> {k} username(s) appended.\n')
+            else:
+                print(f'> {k} username(s) appended.\n')
+            k = 0
 
     print('> Iterating over lists ...\n')
     for j in range(len(followingList)):
@@ -97,7 +81,7 @@ def watchAcc(driver, accData):
 
 if __name__ == "__main__":
     clearScreen()
-    print('='*8, '<> InstaWatch <>', '='*8)
+    print('='*8, '<> InstaFollow <>', '='*8)
     accData = []
     accData.append(str(input('\n> Username: ')))
     accData.append(str(input('> Password: ')))

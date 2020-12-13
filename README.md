@@ -1,15 +1,15 @@
 <p align="center">
-    <a href="https://github.com/felpshn/insta-watch">
-        <img width="566" height="113" src="https://github.com/felpshn/insta-watch/blob/master/.github/instawatch-logo.png">
+    <a href="https://github.com/felpshn/instafollow">
+        <img src="https://github.com/felpshn/instafollow/blob/master/.github/instafollow-logo.png">
     </a>
 </p>
 
 <p align="center">
-    <a href="https://github.com/felpshn/insta-watch">
+    <a href="https://github.com/felpshn/instafollow/releases/">
         <img src="https://img.shields.io/badge/version-3.0-lightgrey">
     </a>
     <a href="https://www.python.org/">
-        <img src="https://img.shields.io/badge/built%20with-Python%203-yellow">
+        <img src="https://img.shields.io/badge/built%20with-Python%203-blue">
     </a>
     <a href="https://github.com/SeleniumHQ/selenium">
         <img src="https://img.shields.io/badge/built%20with-Selenium-brightgreen">
@@ -17,47 +17,52 @@
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
         <img src="https://img.shields.io/badge/license-CC%20BY--NC--SA%20v4.0-orange">
     </a>
+    <a href="https://makeapullrequest.com/">
+        <img src="https://img.shields.io/badge/PRs-welcome-blueviolet">
+    </a>
 </p>
 
-## :scroll: About
+## About
 
-Automated tool built with Selenium to list the users who don't follow you back on Instagram.
+InstaFollow is a tiny automated tool built with Selenium to list all the users which are not following you back on Instagram.
 
-### Supported WebDrivers
-- **Google Chrome (Linux & Windows)** - WebDriver download link: https://bit.ly/2EEkcpK
-- **Microsoft Edge Chromium Based (Windows)** - WebDriver download link: https://bit.ly/3hOeeRq
-- **Mozilla Firefox (Linux & Windows)** - WebDriver download link: https://bit.ly/2EO4ojZ
+## How to use
 
-### Supported Linux distros (for auto install)
-- **Debian/Ubuntu**
-- **Arch Linux**
-- **Fedora**
+### Getting started
 
-## :question: How to use
+Check out if you have any of the supported browsers and its version, after this, download the corresponding webdriver listed below.
 
-### :baby: Setting up for the first time
+**Supported webdrivers**
+- [Google Chrome (Linux & Windows)](https://chromedriver.chromium.org/downloads)
+- [Microsoft Edge Chromium Based (Windows)](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/#downloads)
+- [Mozilla Firefox (Linux & Windows)](https://github.com/mozilla/geckodriver/releases)
 
-**1)** Check out your browser version and download the corresponding version of the supported webdrivers listed above.
+#### Clone this repo and cd into project's folder
 
-**2)** On your sys terminal:
 ```elm
-git clone https://github.com/felpshn/insta-watch.git
+git clone https://github.com/felpshn/instafollow.git
 
-cd insta-watch
+cd instafollow
 ```
-#### Automatic installation
-**3)** If you're in one of the supported linux distros, you can simple run the ```setup.sh``` for setting everything up. After this, you should be able to run already.
-```elm
-sudo ./setup.sh
-```
+
+#### Auto installation
+
+If you're using one of the supported linux distros listed below, you can simply run the `setup.sh` with `sudo` for setting up all dependencies needed. After this, you should be able to run already (Jump to **Running** section).
+
+**Supported Linux distros**
+- Debian/Ubuntu
+- Arch Linux
+- Fedora
+
 #### Manual installation
-**3)** If you're in Windows or any other OS:
 
-**3.1)** With ```pip```, please install the following libs:
+If you're in Windows or any other OS, with `pip`, please install the following libs:
 - **selenium**
 - **explicit**
+- **tqdm**
 
-**3.2)** Run the ```setDriverFile.py``` located in ```src``` to automatically extract and move the downloaded webdriver file to the project's root folder.
+Now make sure that you have downloaded one of the webdrivers mentioned before and check if he is in your **Downloads** directory. After that, run the `setDriverFile.py` located in `src` to automatically extract and move the webdriver to the project's folder.
+
 ```elm
 cd src
 
@@ -68,22 +73,28 @@ python3 setDriverFile.py
 py setDriverFile.py
 ```
 
-### :running: Running
+#### Everything settled up. ready to go!
+
+### Running
+
+Before you run, if you're using **2FA (two-factor authentication)** you will need to type the auth code after logging to your account, for that I've set 15s sleep, after this time, the program will continue its execution. 
+
 ```elm
 -- Linux:
-python3 insta_watch.py
+python3 instafollow.py
 
 -- Windows:
-py insta_watch.py
+py instafollow.py
 ```
 
-### :tada: That's it!
-Thanks for using InstaWatch!, if you have experienced any issues, please let me know. Also, don't forget to read the **Additional Info** section for more details about this little tool.
+## Final considerations
 
-## :loudspeaker: Additional Info
+#### That's pretty much it!
 
-> If you're using 2FA (two-factor authentication) you will need to manually enter the auth code, for that I've set a 15s sleep, after this time, the program will go on its execution. 
+Thanks for using InstaFollow! If you have experienced any issues, please let me know or in case if you know how to solve it, feel welcomed to help to fix that out.
+
+Also, if you wanna contribute to this tool, feel welcomed to do that as well. Our main goals are make the program execution more faster and reduce the code without compromising its readability. You can also contribute by writing more efficient code or fixing typos, I just ask you to keep in mind that he's a **tiny** tool, and therefore, let's try not to lose our focus about the program's main purpose.
 
 > **DISCLAIMER:** This is a research project. I am by no means responsible for any usage of this tool, and I'm also not responsible if your accounts get banned due to the use of this tool. Use on your own behalf.
 
-> **This project is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://github.com/felpshn/insta-watch/blob/master/LICENSE).**
+> **This project is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://github.com/felpshn/instafollow/blob/master/LICENSE)**
