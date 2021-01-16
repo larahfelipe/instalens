@@ -26,9 +26,10 @@ fi
 
 pip3 install selenium &&
 pip3 install explicit &&
+pip3 install tqdm &&
 
 cd src
-python3 setDriverFile.py &&
+python3 handleWebdriver.py
 
 echo -e "\n${CL}====================="
 echo -e "${NC}        Done!"

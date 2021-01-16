@@ -1,9 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-from WebDriver import GetWebDriver
+from Browser import WebBrowser
 
-from itertools import count
+from tqdm import tqdm
 from explicit.waiter import find_element
 
 from os import name, system
@@ -14,49 +14,54 @@ def clearScreen():
     system('cls') if name == 'nt' else system('clear')
 
 
-def signIn(driver, accData):
-    driver.get('https://www.instagram.com/')
+def signIn(browser, accData):
+    browser.get('https://www.instagram.com/')
     sleep(1.5)
-    findField = driver.find_element_by_xpath('//input[@name=\'username\']')
+    findField = browser.find_element_by_xpath('//input[@name=\'username\']')
     findField.send_keys(accData[0])
-    findField = driver.find_element_by_xpath('//input[@name=\'password\']')
+    findField = browser.find_element_by_xpath('//input[@name=\'password\']')
     findField.send_keys(accData[1])
     findField.send_keys(Keys.RETURN)
     sleep(15.0)
 
 
-def getProfile(accName, runtimeHandler):
-    driver.get(f'https://www.instagram.com/{accName}')
+def fetchAccFollowx(accName, runtimeHandler):
+    browser.get(f'https://www.instagram.com/{accName}')
     if runtimeHandler == 'following':
         clearScreen()
         print(f'> Watching "{accName}" profile.\n')
-    print(f'> Catching usernames in "{runtimeHandler.capitalize()}" list ...')
-    findField = driver.find_element_by_xpath(f'//a[@href=\'/{accName}/{runtimeHandler}/\']')
-    totalAccFollowx = findField.find_element_by_tag_name('span').text
-    accData.append(int(totalAccFollowx))
+    findField = browser.find_element_by_xpath(f'//a[@href=\'/{accName}/{runtimeHandler}/\']')
+    totalAccFollowx = int(findField.find_element_by_tag_name('span').text)
+    accData.append(totalAccFollowx)
     findField.click()
+    print(f'> Catching usernames in "{runtimeHandler.capitalize()}" list ...')
     usrElmtXPosition = 'ul div li:nth-child({}) a.notranslate'
-    for listedUsrs in count(start=1, step=12):
+    listIterator = tqdm(
+        range(1, totalAccFollowx, 12),
+        ncols=65,
+        leave=False
+    )
+    for listedUsrs in listIterator:
         for usrIndex in range(listedUsrs, listedUsrs+12):
-            yield find_element(driver, usrElmtXPosition.format(usrIndex)).text
-        lastUsrListed = find_element(driver, usrElmtXPosition.format(usrIndex))
-        driver.execute_script("arguments[0].scrollIntoView()", lastUsrListed)
+            yield find_element(browser, usrElmtXPosition.format(usrIndex)).text
+        lastUsrListed = find_element(browser, usrElmtXPosition.format(usrIndex))
+        browser.execute_script("arguments[0].scrollIntoView()", lastUsrListed)
 
 
-def watchAcc(driver, accData):
+def performIteration(browser, accData):
     k = 0
-    followingList = []
-    followersList = []
+    following = []
+    followers = []
     notFollowingBack = []
     for a in range(1, 3):
         try:
             runtimeHandler = 'following' if a == 1 else 'followers'
-            for i, usr in enumerate(getProfile(accData[0], runtimeHandler), 1):
+            for i, usr in enumerate(fetchAccFollowx(accData[0], runtimeHandler), 1):
                 k = i
                 if runtimeHandler == 'following':
-                    followingList.append(usr)
+                    following.append(usr)
                 else:
-                    followersList.append(usr)
+                    followers.append(usr)
         except:
             if k < accData[a+1]:
                 print(f'> {accData[a+1]-k} user(s) not found.\n> {k} username(s) appended.\n')
@@ -64,33 +69,36 @@ def watchAcc(driver, accData):
                 print(f'> {k} username(s) appended.\n')
             k = 0
 
-    print('> Iterating over lists ...\n')
-    for j in range(len(followingList)):
-        if followingList[j] not in followersList:
-            notFollowingBack.append(followingList[j])
+    for j in range(len(following)):
+        if following[j] not in followers:
+            notFollowingBack.append(following[j])
 
     sleep(2.5)
     clearScreen()
     print('> Not following you back:\n')
     notFollowingBackSorted = sorted(notFollowingBack)
     for k in range(len(notFollowingBackSorted)):
-        print(f'({k+1})- {notFollowingBackSorted[k]}')
+        print(f'{k+1}- {notFollowingBackSorted[k]}')
 
-    driver.quit()
+    browser.quit()
 
 
 if __name__ == "__main__":
     clearScreen()
-    print('='*8, '<> InstaFollow <>', '='*8)
+    print('█'*8, '| InstaFollow |', '█'*8)
     accData = []
-    accData.append(str(input('\n> Username: ')))
-    accData.append(str(input('> Password: ')))
     try:
-        driver = GetWebDriver().driverName()(executable_path=GetWebDriver().driverPath())
-        print('-'*34, '\nDone!\n> Starting WebDriver ...')
-        print('-'*34)
-        signIn(driver, accData)
-        watchAcc(driver, accData)
+        if WebBrowser().driverExists() == False:
+            raise Exception('\n> Couldn\'t find the webdriver\'s executable!')
+        accData.append(str(input('\n> Username: ')))
+        accData.append(str(input('> Password: ')))
+        if len(accData[0]) > 0 and len(accData[1]) > 0:
+            browser = WebBrowser().getName()(executable_path=WebBrowser().getPath())
+            print('-'*34, '\nDone!\n> Opening Browser ...')
+            signIn(browser, accData)
+            performIteration(browser, accData)
+        else:
+            print('\n> Cannot entry empty values!')
     except Exception as e:
         print(e)
     input('\nPress any key to continue ...')

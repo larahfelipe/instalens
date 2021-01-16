@@ -61,16 +61,16 @@ If you're in Windows or any other OS, with `pip`, please install the following l
 - **explicit**
 - **tqdm**
 
-Now make sure that you have downloaded one of the webdrivers mentioned before and check if he is in your **Downloads** directory. After that, run the `setDriverFile.py` located in `src` to automatically extract and move the webdriver to the project's folder.
+Now make sure that you have downloaded one of the webdrivers mentioned before and check if he is in your **Downloads** directory. After that, run the `handleWebdriver.py` located in `src` to automatically extract and move the webdriver to the project's folder.
 
 ```elm
 cd src
 
 -- Linux:
-python3 setDriverFile.py
+python3 handleWebdriver.py
 
 -- Windows:
-py setDriverFile.py
+py handleWebdriver.py
 ```
 
 #### Everything settled up. ready to go!
