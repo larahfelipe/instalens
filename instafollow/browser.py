@@ -1,5 +1,5 @@
 from selenium import webdriver
-from os import sep
+from os import sep, name
 from os.path import dirname, realpath, isfile
 
 class Browser:
@@ -12,6 +12,7 @@ class Browser:
     self.isDriverExists = False
     self.__driverPath = ''
     self.__driverName = ''
+    self.__fileExtension = ''
     self.__getDriver()
 
 
@@ -25,8 +26,10 @@ class Browser:
 
   def __getDriver(self):
     srcDir = dirname(realpath(__file__)) + sep
+    if name == 'nt':
+      self.__fileExtension = '.exe'
     for i in range(len(self.__supportedDrivers)):
-      verifyDriver = f'{srcDir}{self.__supportedDrivers[i]}'
+      verifyDriver = f'{srcDir}{self.__supportedDrivers[i]}{self.__fileExtension}'
       if isfile(verifyDriver):
         self.isDriverExists = True
         self.__driverPath = verifyDriver
