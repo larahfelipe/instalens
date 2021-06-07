@@ -20,9 +20,12 @@ class Util:
 
 
   @staticmethod
-  def validateCredentials(str):
-    if len(str) == 0:
+  def setAndValidateCredential(targetField):
+    credential = str(input(f'> {targetField}: '))
+    if len(credential) == 0:
       raise Exception('\n!> Cannot leave a blank field!')
+    else:
+      return credential
 
 
   @staticmethod

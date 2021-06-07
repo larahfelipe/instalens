@@ -34,7 +34,7 @@ class InstaFollow:
     contextSelector = self.browser.find_element_by_xpath(f'//a[@href=\'/{self.__username}/{onPerform}/\']')
     self.totalUserFollowx = int(contextSelector.find_element_by_tag_name('span').text)
     contextSelector.click()
-    print(f'> Catching users in "{onPerform.capitalize()}" list ...')
+    print(f'> Collecting users in "{onPerform.capitalize()}" list ...')
     usrXMLPath = 'ul div li:nth-child({}) a.notranslate'
     listIterator = tqdm(
       range(1, self.totalUserFollowx, 12),
@@ -61,7 +61,7 @@ class InstaFollow:
             following.append(usr)
           else:
             followers.append(usr)
-      finally:
+      except:
         if k < self.totalUserFollowx:
           print(f'> {self.totalUserFollowx - k} user(s) not found.\n> {k} user(s) were appended.\n')
         else:
@@ -73,7 +73,7 @@ class InstaFollow:
     self.browser.quit()
 
 
-  def __showUsrsNotFollowingBack(self):
+  def __getUsersNotFollowingBack(self):
     Util.clearScreen()
     print('> Not following back:\n')
     notFollowingBackSorted = sorted(self.notFollowingBack)
@@ -84,4 +84,4 @@ class InstaFollow:
   def run(self):
     self.__signIn()
     self.__handleUserIteration()
-    self.__showUsrsNotFollowingBack()
+    self.__getUsersNotFollowingBack()

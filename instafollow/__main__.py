@@ -3,12 +3,12 @@ from .util import Util
 
 if __name__ == '__main__':
   Util.clearScreen()
-  print('█'*10, ' InstaFollow ', '█'*10)
+  print('█'*10, ' InstaFollow ', '█'*10, '\n')
   try:
     Util.checkWebdriverExistence()
     InstaFollow(
-      Util.validateCredentials(str(input('\n> Username: '))),
-      Util.validateCredentials(str(input('> Password: ')))
+      Util.setAndValidateCredential('Username'),
+      Util.setAndValidateCredential('Password')
     ).run()
   except Exception as e:
     print(e)
