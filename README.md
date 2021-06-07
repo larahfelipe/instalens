@@ -24,11 +24,11 @@
 
 ## About
 
-If you're the kind of person that cares about the people that aren't following you back on Instagram, you've come into the right repo. InstaFollow is a tiny automated tool built with Python and Selenium to list all the users which are not following you back.
+If you like to know which users are not following you back on Instagram, you just have found a great tool to help you out with that. InstaFollow is a tiny automated tool built with Python and Selenium to list all the users that aren't following you back.
 
 ## How to use
 
-Before we begin, make sure that you have `python 3` and `pip` installed in your machine. Also, check out if you have any of the supported web browsers listed below and it's current version as well (it may be useful).
+Before we begin, make sure that you have `Python 3` and `pip` installed in your machine. Also, check out if you have any of the supported web browsers listed below and it's current version as well (it may be useful).
 
 **Supported browsers**
 - [Google Chrome (Linux & Windows)](https://chromedriver.chromium.org/downloads)
@@ -47,7 +47,7 @@ cd InstaFollow
 
 ### Installation
 
-Before we move on to the installation process, make sure that you have downloaded one of the compatible webdriver and also, check if he's in your **Downloads** directory. Then, run the `setup.py` to automatically set all dependencies required and the webdriver as well.
+Before we move on to the installation process, make sure that you have downloaded one of the compatible webdriver, and also, check if he's in your **Downloads** directory. Then, run the `setup.py` to automatically set all dependencies required and the webdriver as well.
 
 ```elm
 -- Linux:
@@ -59,7 +59,7 @@ py setup.py
 
 ### Running
 
-Now notice, if have the **2FA (two-factor authentication)** turned on, you will need to type the auth code after logging to your account, for that I've set 15s sleep, after this time, the program will continue it's execution.
+Now notice, if you use the **2FA (two-factor authentication)**, you will need to type the auth code after logging to your account, for that I've set 15s sleep, after this time, the program will continue it's execution.
 
 ```elm
 -- Linux:
@@ -75,7 +75,7 @@ py -m instafollow
 
 Thanks for using InstaFollow! If you have experienced any issues, please let me know or in case if you know how to solve it, feel free to help fix that out.
 
-Also, if you wanna contribute to this tool, feel welcomed to do that as well. Our main goals are make the program execution more faster and reduce the code without compromising it's readability. You can also contribute by writing more efficient code or fixing typos, any contribuition is valid! I just ask you to keep in mind that he's a **tiny** tool, and therefore, let's try not to lose our focus about the program's main purpose.
+Also, in case you wanna contribute to this tool by writing more efficient code or fixing typos, feel welcomed to do that as well, any kind of contribution is valid! Just keep in mind that he's a **tiny** tool, and therefore, let's try not to lose our focus about the program's main purpose.
 
 > **DISCLAIMER:** This is a research project. I am by no means responsible for any usage of this tool, and I'm also not responsible if your accounts get banned due to the use of this tool. Use on your own behalf.
 
