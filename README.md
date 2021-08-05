@@ -1,11 +1,11 @@
 <p align="center">
-    <a href="https://github.com/felpshn/InstaFollow">
-        <img src="https://github.com/felpshn/InstaFollow/blob/master/.github/instafollow-logo.png">
+    <a href="https://github.com/felpshn/InstaFollowers">
+        <img src="https://github.com/felpshn/InstaFollowers/blob/master/.github/instafollowers-logo.png">
     </a>
 </p>
 
 <p align="center">
-    <a href="https://github.com/felpshn/InstaFollow/releases/">
+    <a href="https://github.com/felpshn/InstaFollowers/releases/">
         <img src="https://img.shields.io/badge/version-4.x-lightgrey">
     </a>
     <a href="https://www.python.org/">
@@ -24,7 +24,7 @@
 
 ## About
 
-If you like to know which users are not following you back on Instagram, you just have found a great tool to help you out with that. InstaFollow is a tiny automated tool built with Python and Selenium to list all the users that aren't following you back.
+If you like to know which users are not following you back on Instagram, you just have found a great tool to help you out with that. InstaFollowers is a tiny automated tool built with Python and Selenium to list all the users that aren't following you back.
 
 ## How to use
 
@@ -40,9 +40,9 @@ After that, download your browser's webdriver by clicking in his name above. Whe
 ### Clone this repo and cd into project's folder
 
 ```elm
-git clone https://github.com/felpshn/InstaFollow.git
+git clone https://github.com/felpshn/InstaFollowers.git
 
-cd InstaFollow
+cd InstaFollowers
 ```
 
 ### Installation
@@ -63,20 +63,20 @@ Now notice, if you use the **2FA (two-factor authentication)**, you will need to
 
 ```elm
 -- Linux:
-python3 -m instafollow
+python3 -m instafollowers
 
 -- Windows:
-py -m instafollow
+py -m instafollowers
 ```
 
 ## Final considerations
 
 #### That's pretty much it!
 
-Thanks for using InstaFollow! If you have experienced any issues, please let me know or in case if you know how to solve it, feel free to help fix that out.
+Thanks for using InstaFollowers! If you have experienced any issues, please let me know or in case if you know how to solve it, feel free to help fix that out.
 
 Also, in case you wanna contribute to this tool by writing more efficient code or fixing typos, feel welcomed to do that as well, any kind of contribution is valid! Just keep in mind that he's a **tiny** tool, and therefore, let's try not to lose our focus about the program's main purpose.
 
 > **DISCLAIMER:** This is a research project. I am by no means responsible for any usage of this tool, and I'm also not responsible if your accounts get banned due to the use of this tool. Use on your own behalf.
 
-> **This project is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://github.com/felpshn/instafollow/blob/master/LICENSE)**
+> **This project is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://github.com/felpshn/instafollowers/blob/master/LICENSE)**

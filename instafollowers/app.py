@@ -6,14 +6,19 @@ from time import sleep
 from .browser import Browser
 from .util import Util
 
-class InstaFollow:
+class InstaFollowers:
   def __init__(self, accountUsername, accountPassword):
     self.__username = accountUsername
     self.__password = accountPassword
-    self.browser = Browser().onSet()(
-      executable_path=Browser().getDriverPath(), 
-      firefox_profile=Browser().getCustomFirefoxOptions()
-    )
+    if Browser().isFirefox:
+      self.browser = Browser().onSet()(
+        executable_path=Browser().getDriverPath(),
+        firefox_profile=Browser().getCustomFirefoxOptions()
+      )
+    else:
+      self.browser = Browser().onSet()(
+        executable_path=Browser().getDriverPath()
+      )
     self.totalUserFollowx = 0
     self.following = []
     self.followers = []
@@ -58,8 +63,8 @@ class InstaFollow:
     for n in range(1, 3):
       try:
         onPerform = 'following' if n == 1 else 'followers'
-        for i, usr in enumerate(self.__getFollowx(onPerform), 1):
-          k = i
+        for idx, usr in enumerate(self.__getFollowx(onPerform), 1):
+          k = idx
           if onPerform == 'following':
             self.following.append(usr)
           else:
@@ -81,8 +86,8 @@ class InstaFollow:
 
     print('> Not following back:\n')
     notFollowingBackSorted = sorted(self.notFollowingBack)
-    for idx, user in enumerate(notFollowingBackSorted):
-      print(f'{idx+1}. {user}')
+    for idx, usr in enumerate(notFollowingBackSorted, 1):
+      print(f'{idx}. {usr}')
 
 
   def run(self):
