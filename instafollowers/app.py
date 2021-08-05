@@ -6,14 +6,19 @@ from time import sleep
 from .browser import Browser
 from .util import Util
 
-class InstaFollow:
+class InstaFollowers:
   def __init__(self, accountUsername, accountPassword):
     self.__username = accountUsername
     self.__password = accountPassword
-    self.browser = Browser().onSet()(
-      executable_path=Browser().getDriverPath(), 
-      firefox_profile=Browser().getCustomFirefoxOptions()
-    )
+    if Browser().isFirefox:
+      self.browser = Browser().onSet()(
+        executable_path=Browser().getDriverPath(),
+        firefox_profile=Browser().getCustomFirefoxOptions()
+      )
+    else:
+      self.browser = Browser().onSet()(
+        executable_path=Browser().getDriverPath()
+      )
     self.totalUserFollowx = 0
     self.following = []
     self.followers = []
@@ -28,17 +33,18 @@ class InstaFollow:
     ctxSelector = self.browser.find_element_by_xpath('//input[@name=\'password\']')
     ctxSelector.send_keys(self.__password)
     ctxSelector.send_keys(Keys.RETURN)
-    sleep(15.0)
+    sleep(15)
 
 
   def __getFollowx(self, onPerform):
     self.browser.get(f'https://www.instagram.com/{self.__username}/')
+    sleep(2.5)
     if onPerform == 'following':
       Util.clearScreen()
       print(f'> Watching "{self.__username}" profile.\n')
     ctxSelector = self.browser.find_element_by_xpath(f'//a[@href=\'/{self.__username}/{onPerform}/\']')
     self.totalUserFollowx = int(ctxSelector.find_element_by_tag_name('span').text)
-    ctxSelector.click()
+    ctxSelector.send_keys(Keys.ENTER)
     print(f'> Collecting users in "{onPerform.capitalize()}" list ...')
     usrXMLPath = 'ul div li:nth-child({}) a.notranslate'
     listIterator = tqdm(
@@ -58,8 +64,8 @@ class InstaFollow:
     for n in range(1, 3):
       try:
         onPerform = 'following' if n == 1 else 'followers'
-        for i, usr in enumerate(self.__getFollowx(onPerform), 1):
-          k = i
+        for idx, usr in enumerate(self.__getFollowx(onPerform), 1):
+          k = idx
           if onPerform == 'following':
             self.following.append(usr)
           else:
@@ -75,14 +81,14 @@ class InstaFollow:
 
   def __getUsersNotFollowingBack(self):
     Util.clearScreen()
-    for _, user in enumerate(self.following):
-      if user not in self.followers:
-        self.notFollowingBack.append(user)
+    for _, usr in enumerate(self.following):
+      if usr not in self.followers:
+        self.notFollowingBack.append(usr)
 
     print('> Not following back:\n')
     notFollowingBackSorted = sorted(self.notFollowingBack)
-    for idx, user in enumerate(notFollowingBackSorted):
-      print(f'{idx+1}. {user}')
+    for idx, usr in enumerate(notFollowingBackSorted, 1):
+      print(f'{idx}. {usr}')
 
 
   def run(self):

@@ -10,6 +10,7 @@ class Browser:
       'geckodriver',
       'msedgedriver'
     ]
+    self.isFirefox = False
     self.isDriverExists = False
     self.__driverPath = ''
     self.__driverName = ''
@@ -33,6 +34,8 @@ class Browser:
       possibDriverPath = f'{srcDir}{self.__supportedDrivers[idx]}{fileExtension}'
       if isfile(possibDriverPath):
         self.isDriverExists = True
+        if self.__supportedDrivers[idx] == self.__supportedDrivers[1]:
+          self.isFirefox = True
         self.__driverPath = possibDriverPath
         self.__driverName = self.__supportedDrivers[idx]
         break

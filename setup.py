@@ -13,6 +13,6 @@ def installRequiredDependcs():
 
 installRequiredDependcs()
 
-from instafollow.util import Util
+from instafollowers.util import Util
 
 Util.handleWebdriverExtraction()

@@ -1,4 +1,4 @@
-from .app import InstaFollow
+from .app import InstaFollowers
 from .util import Util
 
 if __name__ == '__main__':
@@ -6,7 +6,7 @@ if __name__ == '__main__':
   print('█'*10, ' InstaFollow ', '█'*10, '\n')
   try:
     Util.checkWebdriverExistence()
-    InstaFollow(
+    InstaFollowers(
       Util.setAndValidateCredential('Username'),
       Util.setAndValidateCredential('Password')
     ).run()
