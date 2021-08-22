@@ -31,18 +31,17 @@ If you like to know which users are not following you back on Instagram, you jus
 Before we begin, make sure that you have `Python 3` and `pip` installed in your machine. Also, check out if you have any of the supported web browsers listed below and it's current version as well (it may be useful).
 
 **Supported browsers**
+
 - [Google Chrome (Linux & Windows)](https://chromedriver.chromium.org/downloads)
 - [Microsoft Edge Chromium Based (Windows)](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/#downloads)
 - [Mozilla Firefox (Linux & Windows)](https://github.com/mozilla/geckodriver/releases) [Recommended]
 
 After that, download your browser's webdriver by clicking in his name above. When you're up to download the webdriver, if were offered many versions, choose that one who matches your browser's current version or some previous version that are most close to it, for better compatibility and to avoid unexpected behavior.
 
-### Clone this repo and cd into project's folder
+### Clone this repository and cd into project's folder
 
 ```elm
-git clone https://github.com/felpshn/InstaFollowers.git
-
-cd InstaFollowers
+git clone https://github.com/felpshn/InstaFollowers.git && cd InstaFollowers
 ```
 
 ### Installation
