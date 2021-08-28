@@ -80,9 +80,9 @@ class InstaFollowers:
 
   def __getUsersNotFollowingBack(self):
     Util.clearScreen()
-    for _, user in enumerate(self.following):
-      if user not in self.followers:
-        self.notFollowingBack.append(user)
+    for _, usr in enumerate(self.following):
+      if usr not in self.followers:
+        self.notFollowingBack.append(usr)
 
     print('> Not following back:\n')
     notFollowingBackSorted = sorted(self.notFollowingBack)
