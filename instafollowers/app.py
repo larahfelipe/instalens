@@ -33,11 +33,12 @@ class InstaFollowers:
     ctxSelector = self.browser.find_element_by_xpath('//input[@name=\'password\']')
     ctxSelector.send_keys(self.__password)
     ctxSelector.send_keys(Keys.RETURN)
-    sleep(15.0)
+    sleep(15)
 
 
   def __getFollowx(self, onPerform):
     self.browser.get(f'https://www.instagram.com/{self.__username}/')
+    sleep(2.5)
     if onPerform == 'following':
       Util.clearScreen()
       print(f'> Watching "{self.__username}" profile.\n')
