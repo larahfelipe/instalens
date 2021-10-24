@@ -1,11 +1,11 @@
 <p align="center">
-    <a href="https://github.com/felpshn/InstaFollowers">
-        <img src="https://github.com/felpshn/InstaFollowers/blob/master/.github/instafollowers-logo.png">
+    <a href="https://github.com/larafe1/InstaFollowers">
+        <img src="https://github.com/larafe1/InstaFollowers/blob/master/.github/instafollowers-logo.png">
     </a>
 </p>
 
 <p align="center">
-    <a href="https://github.com/felpshn/InstaFollowers/releases/">
+    <a href="https://github.com/larafe1/InstaFollowers/releases/">
         <img src="https://img.shields.io/badge/version-4.x-lightgrey">
     </a>
     <a href="https://www.python.org/">
@@ -41,7 +41,7 @@ After that, download your browser's webdriver by clicking in his name above. Whe
 ### Clone this repository and cd into project's folder
 
 ```elm
-git clone https://github.com/felpshn/InstaFollowers.git && cd InstaFollowers
+git clone https://github.com/larafe1/InstaFollowers.git && cd InstaFollowers
 ```
 
 ### Installation
@@ -78,4 +78,4 @@ Also, in case you wanna contribute to this tool by writing more efficient code o
 
 > **DISCLAIMER:** This is a research project. I am by no means responsible for any usage of this tool, and I'm also not responsible if your accounts get banned due to the use of this tool. Use on your own behalf.
 
-> **This project is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://github.com/felpshn/instafollowers/blob/master/LICENSE)**
+> **This project is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://github.com/larafe1/instafollowers/blob/master/LICENSE)**
