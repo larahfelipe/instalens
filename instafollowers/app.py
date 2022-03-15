@@ -44,7 +44,7 @@ class InstaFollowers:
       print(f'> Watching "{self.__username}" profile.\n')
     ctxSelector = self.browser.find_element_by_xpath(f'//a[@href=\'/{self.__username}/{onPerform}/\']')
     self.totalUserFollowx = int(ctxSelector.find_element_by_tag_name('span').text)
-    ctxSelector.click()
+    ctxSelector.send_keys(Keys.ENTER)
     print(f'> Collecting users in "{onPerform.capitalize()}" list ...')
     usrXMLPath = 'ul div li:nth-child({}) a.notranslate'
     listIterator = tqdm(
