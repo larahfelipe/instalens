@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
   if not username or not password:
     username = input('Username:\n> ')
-    password = input('Password:\n> ')
+    password = input('\nPassword:\n> ')
 
   try:
     InstaLens(username, password).run()
