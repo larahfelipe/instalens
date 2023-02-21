@@ -1,8 +1,11 @@
-__pycache__
-Driver_Notes
+__pycache__/
+Driver_Notes/
+logs/
+data/
+
 msedgedriver
 geckodriver
 chromedriver
+
 *.exe
 *.tar.gz
-*.log
