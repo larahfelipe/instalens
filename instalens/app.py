@@ -22,10 +22,7 @@ class InstaLens:
     self.password = password
     self.authenticated = False
     self.total: int = 0
-    self.following: list[str] = []
-    self.followers: list[str] = []
-    self.not_following_you: list[str] = []
-    self.not_following_them: list[str] = []
+    self.following, self.followers, self.not_following_you, self.not_following_them = [], [], [], []
     self.browser = Browser.get_instance()
 
 
