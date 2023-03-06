@@ -9,9 +9,7 @@ from .browser import Browser
 from .elements import Elements
 from .util import Util
 
-following = TypeVar('following')
-followers = TypeVar('followers')
-Collections = Tuple[following, followers]
+Collections = Tuple[TypeVar('following', bound=str), TypeVar('followers', bound=str)]
 
 ITER_START_VALUE = 1
 ITER_STEP_VALUE = 12
@@ -20,12 +18,9 @@ class InstaLens:
   def __init__(self, username: str, password: str):
     self.username = username
     self.password = password
-    self.authenticated = False
+    self.authenticated: bool = False
     self.total: int = 0
-    self.following: list[str] = []
-    self.followers: list[str] = []
-    self.not_following_you: list[str] = []
-    self.not_following_them: list[str] = []
+    self.following, self.followers, self.not_following_you, self.not_following_them = [], [], [], []
     self.browser = Browser.get_instance()
 
 
@@ -43,7 +38,7 @@ class InstaLens:
 
     mfa_input_element = element(Elements.INPUT_AUTH_MFA)
     if mfa_input_element:
-      mfa_code = input(str('\nEnter the 2FA code:\n> '))
+      mfa_code = input('\nEnter the 2FA code:\n> ')
       mfa_input_element.send_keys(mfa_code + Keys.RETURN)
       Util.clear_screen()
 
