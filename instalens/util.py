@@ -22,6 +22,14 @@ class Util:
   def get_dir_path():
     return path.dirname(path.realpath(__file__)) + sep
 
+  @staticmethod
+  def check_dir_exists(target_dir: str, current_dir=True):
+    if not current_dir:
+      return path.isdir(target_dir)
+
+    abs_path = Util.get_dir_path()
+    return path.isdir(abs_path + target_dir)
+
 
   @staticmethod
   def check_file_exists(target_file: str, current_dir=True):
@@ -49,7 +57,20 @@ class Util:
 
 
   @staticmethod
+  def create_dir(dir_name: str):
+    dir_exists = Util.check_dir_exists(dir_name, current_dir=False)
+
+    if not dir_exists:
+      abs_path = Util.get_dir_path()
+      system(f'mkdir {abs_path}{dir_name}')
+
+
+  @staticmethod
   def write_to_file(filename: str, content: str, mode='w'):
+    data_dir_exists = Util.check_dir_exists('data')
+    if not data_dir_exists:
+      Util.create_dir('data')
+
     fmt_file_path = Util.get_dir_path() + f'data/{filename}'
 
     file_exists = Util.check_file_exists(fmt_file_path, current_dir=False)
