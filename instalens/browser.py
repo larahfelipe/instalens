@@ -25,6 +25,10 @@ class Browser:
     if not self._wd_path:
       raise Exception('No webdriver was found in the current directory')
 
+    logs_dir_exists = Util.check_dir_exists('logs')
+    if not logs_dir_exists:
+      Util.create_dir('logs')
+
     service = Service(
       executable_path=self._wd_path,
       service_args=['--verbose', f'--log-path={self._abs_path}/logs/{self._wd_name}.log']
